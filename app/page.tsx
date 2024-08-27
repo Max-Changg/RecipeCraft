@@ -18,13 +18,13 @@ interface Recipe {
 export default function Home() {
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [savedRecipes, setSavedRecipes] = useState<Recipe[]>([]);
-  const [explanation, setExplanation] = useState<string | null>(null); 
+  const [explanation, setExplanation] = useState<string | null>(null);
 
   // Function to load saved recipes from localStorage
   const loadSavedRecipes = () => {
     const savedRecipesFromStorage = JSON.parse(localStorage.getItem('savedRecipes') ?? '[]') as Recipe[];
     setSavedRecipes(savedRecipesFromStorage);
-    console.log('Loaded saved recipes:', savedRecipesFromStorage); 
+    console.log('Loaded saved recipes:', savedRecipesFromStorage);
   };
 
   // Function to delete a recipe from saved recipes
@@ -36,12 +36,12 @@ export default function Home() {
 
   // Function to reset the explanation
   const resetExplanation = () => {
-    setExplanation(null); 
+    setExplanation(null);
   };
 
   // Function to reset the recipe
   const resetRecipe = () => {
-    setRecipe(null); 
+    setRecipe(null);
   };
 
   // Load saved recipes when the component mounts
@@ -54,10 +54,10 @@ export default function Home() {
       <Header />
 
       <div className="flex flex-col items-center justify-center flex-grow bg-gray-100">
-        <SearchButton 
-          onRecipeGenerated={(generatedRecipe) => setRecipe(generatedRecipe)} 
+        <SearchButton
+          onRecipeGenerated={(generatedRecipe) => setRecipe(generatedRecipe)}
           resetExplanation={resetExplanation}
-          resetRecipe={resetRecipe} 
+          resetRecipe={resetRecipe}
         />
 
         {recipe && (

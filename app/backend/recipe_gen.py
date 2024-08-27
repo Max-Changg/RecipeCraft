@@ -30,9 +30,7 @@ def generate_recipe(ingredients):
          For the instructions on how to make it, format after 'Instructions: ' and separate each step by a new line. In other words \
          before each step, put a new line. (such as before 2. and before 3.)"}
         ]
-        
     )
-    # return stream.choices[0].message.content
     response = stream.choices[0].message.content
     
     # Define regex patterns to capture each section
@@ -53,8 +51,6 @@ def generate_recipe(ingredients):
 
 
 def explain_ingredients(title, instructions, ingredients):
-    # print(title)
-    # print(ingredients)
     stream = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
@@ -63,13 +59,11 @@ def explain_ingredients(title, instructions, ingredients):
          the taste (sweet, salty, savory, bitter, etc.) and the texture. \
          Then, summarize how the ingredients work together in a dish."}
         ]
-        
     )
     return stream.choices[0].message.content
 
+
 def explain_instructions(title, instructions, ingredients):
-    # print(title)
-    # print(ingredients)
     stream = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
@@ -79,15 +73,8 @@ def explain_instructions(title, instructions, ingredients):
          the step accomplishes and how it will end up in the dish. Do not include each step, \
          but rather only the explanation behind each step. Add a new line after each explanation."}
         ]
-        
     )
     return stream.choices[0].message.content
-
-    
-
-    
-
-
 
 
 app = Flask(__name__)
@@ -125,7 +112,6 @@ def explain_ingredients_endpoint():
     return jsonify({"explanation": explanation})
 
 
-
 @app.route('/explain_instructions', methods=['POST'])
 def explain_instructions_endpoint():
     data = request.json
@@ -140,6 +126,9 @@ def explain_instructions_endpoint():
     return jsonify({"explanation": explanation})
 
 
+@app.route('/')
+def index():
+    return "Welcome to the Recipe Generator API!"
 
 if __name__ == '__main__':
     app.run(debug=True)
