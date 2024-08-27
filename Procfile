@@ -1,2 +1,2 @@
-web: gunicorn app.backend.recipe_gen:app & npx serve -s build
+web: gunicorn recipe-app.app.backend.recipe_gen:app
 
