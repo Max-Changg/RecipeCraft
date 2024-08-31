@@ -17,7 +17,7 @@ export function IngredientsButton({ recipe }: ExplainIngredientsButtonProps) {
     setLoading(true);
     setError('');
     try {
-      const response = await fetch('http://127.0.0.1:5000/explain_ingredients', {
+      const response = await fetch('https://recipecraft-c5725e69feda.herokuapp.com/explain_ingredients', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

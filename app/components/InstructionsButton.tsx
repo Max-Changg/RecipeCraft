@@ -19,7 +19,7 @@ export function InstructionsButton({ recipe, setExplanation }: ExplainInstructio
     setLoading(true);
     setError('');
     try {
-      const response = await fetch('http://127.0.0.1:5000/explain_instructions', {
+const response = await fetch('https://recipecraft-c5725e69feda.herokuapp.com/explain_instructions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

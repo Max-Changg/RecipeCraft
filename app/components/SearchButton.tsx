@@ -26,7 +26,7 @@ export function SearchButton({ onRecipeGenerated, resetExplanation, resetRecipe 
         try {
             console.log('Sending request with ingredients:', ingredients);
 
-            const response = await fetch('http://127.0.0.1:5000/generate_recipe', {
+            const response = await fetch('https://recipecraft-c5725e69feda.herokuapp.com/generate_recipe', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
